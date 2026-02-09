@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieShelf - Profile</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-film"></i>
+                <h1>Movie<span>Shelf</span></h1>
+            </div>
+            <nav class="nav">
+                <a href="home.html" class="nav-link" data-page="home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="movies.html" class="nav-link" data-page="movies">
+                    <i class="fas fa-video"></i> Movies
+                </a>
+                <a href="watchlist.html" class="nav-link" data-page="watchlist">
+                    <i class="fas fa-bookmark"></i> Watchlist
+                </a>
+                <a href="login.html" class="nav-link active" data-page="login">
+                    <i class="fas fa-user"></i> Login
+                </a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" type="button">
+                <i class="fas fa-sun"></i> Theme
+            </button>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content" style="margin-top: 10px;">
+        <div class="container">
+        <h2 style="text-align: center; font-size: 2rem;">My Profile</h2>
+        <div class="profile-card">
+            <div class="profile-header">
+                <i class="fas fa-user-circle profile-icon"></i>
+                <h3 id="profile-name">User</h3>
+                <p id="profile-email">user@example.com</p>
+                <span id="profile-role">role: user</span>
+                <span id="premium-badge" class="premium-badge" style="display:none;">
+                    <i class="fas fa-crown"></i> Premium
+                </span>
+            </div>
+            
+            <div class="profile-actions">
+                <button class="btn btn-primary" id="updateBtn" type="button">
+                <i class="fas fa-pen"></i> Update Profile
+            </button>
+                <a class="btn btn-secondary" href="watchlist.html" id="watchlist-btn">
+                    <i class="fas fa-bookmark"></i> Watchlist
+                </a>
+                <button class="btn btn-secondary" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Log out
+                </button>
+            </div>
+
+            <form id="profile-form" class="profile-form" style="display: none; margin-top: 16px; padding: 10px;">
+            <div class="form-group">
+                <label for="profile-username">
+                <i class="fas fa-user"></i> Username
+                </label>
+                <input type="text" id="profile-username" required />
+            </div>
+            <div class="form-group">
+                <label for="profile-email-input">
+                <i class="fas fa-envelope"></i> Email
+                </label>
+                <input type="email" id="profile-email-input" required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+                <i class="fas fa-save"></i> Save Changes
+            </button>
+            </form>
+        </div>
+
+        <section id="admin-panel" class="admin-panel" style="display: none;">
+            <div class="admin-header">
+                <h3>Admin Panel</h3>
+                <p>Manage user roles</p>
+            </div>
+            <div class="admin-controls">
+                <button id="load-users-btn" class="btn btn-secondary" type="button">
+                    <i class="fas fa-users"></i> Load Users
+                </button>
+            </div>
+            <div id="admin-users-list" class="admin-users-list"></div>
+        </section>
+
+    </div>
+    </main>
+    <div id="toast" class="toast"></div>
+    <script src="../app.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieShelf - Movies</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-film"></i>
+                <h1>Movie<span>Shelf</span></h1>
+            </div>
+            <nav class="nav">
+                <a href="home.html" class="nav-link" data-page="home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="movies.html" class="nav-link active" data-page="movies">
+                    <i class="fas fa-video"></i> Movies
+                </a>
+                <a href="watchlist.html" class="nav-link" data-page="watchlist">
+                    <i class="fas fa-bookmark"></i> Watchlist
+                </a>
+                <a href="login.html" class="nav-link" data-page="login">
+                    <i class="fas fa-user"></i> Login
+                </a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" type="button">
+                <i class="fas fa-sun"></i> Theme
+            </button>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <button id="add-movie-btn" class="btn btn-primary" style="display:none; margin-left: 190px; margin-top: 20px;">
+      <i class="fas fa-plus"></i> Add Movie
+    </button>
+
+    <main class="main-content" style="margin-top: 10px;">
+        <div class="container">
+                <div class="page-header">
+                    <h2>All Movies</h2>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search movies...">
+                    <button id="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="filters">
+                    <span class="filters-title">Filters</span>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-popularity">
+                        Popularity
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-year">
+                        Year (newest)
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-rating">
+                        Rating
+                    </label>
+                    <input type="text" id="filter-genre" class="filter-input" placeholder="Genre (e.g. Action)">
+                    <button id="add-genre" class="btn btn-secondary">Add Genre</button>
+                    <button id="apply-filters" class="btn btn-secondary">
+                        Apply
+                    </button>
+                </div>
+                <div id="genre-chips" class="genre-chips"></div>
+                <div class="results-info">
+                    <span id="results-count">Total: 0</span>
+                </div>
+                <div id="movies-list" class="movies-grid"></div>
+                <div class="pagination">
+                    <button id="prev-page" class="btn btn-secondary">Prev</button>
+                    <span id="page-info">Page 1</span>
+                    <button id="next-page" class="btn btn-secondary">Next</button>
+                </div>
+
+            </div>
+        </main>
+
+
+
+    <div id="add-movie-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Add Movie</h3>
+          <button type="button" id="close-movie-modal" class="modal-close">&times;</button>
+        </div>
+
+        <form id="add-movie-form">
+          <input id="movie-title" type="text" placeholder="Title" required />
+          <input id="movie-year" type="number" placeholder="Year" required />
+          <input id="movie-genres" type="text" placeholder="Genres (comma separated)" required />
+          <input id="movie-cast" type="text" placeholder="Cast (comma separated)" required />
+          <input id="movie-director" type="text" placeholder="Director (comma separated)" required />
+          <input id="movie-poster" type="url" placeholder="Poster URL" />
+          <input id="movie-trailer" type="url" placeholder="Trailer URL" />
+          <textarea id="movie-extract" placeholder="Description" required></textarea>
+          <button type="submit" class="btn btn-primary">Save Movie</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="movie-details-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h3 id="details-title">Movie Title</h3>
+        <button type="button" id="close-details-modal" class="modal-close">&times;</button>
+        </div>
+
+        <div class="watchlist-actions">
+        <label for="watchlist-status">Add to Watchlist</label>
+        <select id="watchlist-status">
+            <option value="plan_to_watch">Plan to Watch</option>
+            <option value="completed">Completed</option>
+            <option value="dropped">Dropped</option>
+        </select>
+            <label class="checkbox-inline">
+        <input type="checkbox" id="watchlist-favorite" />
+        Favourite
+        </label>
+        <button id="add-watchlist-btn" type="button" class="btn btn-primary">Add</button>
+        </div>
+
+        <div class="modal-body">
+        <img id="details-poster" src="" alt="Poster" style="width:100%; border-radius:8px; margin-bottom:12px;">
+        <div class="details-text">
+        <p id="details-year"></p>
+        <p id="details-genres"></p>
+        <p id="details-cast"></p>
+        <p id="details-director"></p>
+        <p id="details-extract"></p>
+        <p id="details-rating"></p>
+        <p id="details-review-count"></p>
+        <p id="details-watchlist-count"></p>
+
+            <div id="details-trailer-wrap" style="display:none; margin-top:12px;">
+            <div class="trailer-embed">
+                <iframe id="details-trailer-iframe"
+                        src=""
+                        title="Trailer"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+            </div>
+        </div></div>
+        <div class="details-actions" id="details-actions" style="display:none;">
+    <button id="edit-movie-btn" class="btn btn-primary" style="margin: 5px;">Edit Movie</button>
+    <button id="delete-movie-btn" class="btn btn-danger" style="margin: 5px;">Delete Movie</button>
+    </div>
+    <div class="review-box">
+    <h4>Add Review</h4>
+    <select id="review-rating">
+        <option value="">Rating</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <textarea id="review-comment" placeholder="Write your review..."></textarea>
+    <button id="submit-review" class="btn btn-primary">Submit</button>
+    </div>
+
+    <h3>Reviews:</h3>
+
+    <div id="reviews-list"></div>
+
+    <form id="edit-movie-form" style="display:none; margin-top:12px;">
+    <input id="edit-title" type="text" placeholder="Title" required />
+    <input id="edit-year" type="number" placeholder="Year" required />
+    <input id="edit-genres" type="text" placeholder="Genres (comma separated)" required />
+    <input id="edit-cast" type="text" placeholder="Cast (comma separated)" required />
+    <input id="edit-director" type="text" placeholder="Director (comma separated)" required />
+    <input id="edit-poster" type="url" placeholder="Poster URL" />
+    <input id="edit-trailer" type="url" placeholder="Trailer URL" />
+    <textarea id="edit-extract" placeholder="Description" required></textarea>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+
+    </div>
+    </div>
+    <br><br>
+    <div id="toast" class="toast"></div>
+    <script src="../app.js"></script>
+  </body>
+</html>

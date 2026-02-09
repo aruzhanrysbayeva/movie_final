@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieShelf - Register</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-film"></i>
+                <h1>Movie<span>Shelf</span></h1>
+            </div>
+            <nav class="nav">
+                <a href="home.html" class="nav-link" data-page="home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="movies.html" class="nav-link" data-page="movies">
+                    <i class="fas fa-video"></i> Movies
+                </a>
+                <a href="watchlist.html" class="nav-link" data-page="watchlist">
+                    <i class="fas fa-bookmark"></i> Watchlist
+                </a>
+                <a href="login.html" class="nav-link active" data-page="login">
+                    <i class="fas fa-user"></i> Login
+                </a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" type="button">
+                <i class="fas fa-sun"></i> Theme
+            </button>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content" style="margin-top: 10px;">
+        <div class="auth-form" id="register-wrapper">
+            <h2>Register</h2>
+            <form id="register-form-elements">
+                <div class="form-alert" id="register-alert" style="display:none;"></div>
+                <div class="form-group">
+                    <label for="register-name">
+                        <i class="fas fa-user"></i> Name
+                    </label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">
+                        <i class="fas fa-envelope"></i> Email
+                    </label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">
+                        <i class="fas fa-lock"></i> Password
+                    </label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-user-plus"></i> Register
+                </button>
+            </form>
+            <p class="auth-switch">
+                Already have an account?
+                <a href="login.html" id="show-login">Login</a>
+            </p>
+        </div>
+    </div>
+    </main>
+    <div id="toast" class="toast"></div>
+    <script src="../app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieShelf - Watchlist</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-film"></i>
+                <h1>Movie<span>Shelf</span></h1>
+            </div>
+            <nav class="nav">
+                <a href="home.html" class="nav-link" data-page="home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="movies.html" class="nav-link" data-page="movies">
+                    <i class="fas fa-video"></i> Movies
+                </a>
+                <a href="watchlist.html" class="nav-link active" data-page="watchlist">
+                    <i class="fas fa-bookmark"></i> Watchlist
+                </a>
+                <a href="login.html" class="nav-link" data-page="login">
+                    <i class="fas fa-user"></i> Login
+                </a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" type="button">
+                <i class="fas fa-sun"></i> Theme
+            </button>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content" style="margin-top: 10px;">
+        <div class="container">
+        <h2>My Watchlist</h2>
+        <section id="premium-panel" class="premium-panel" style="display:none;">
+          <div class="premium-header">
+            <div>
+              <h3>Premium Insights</h3>
+              <p>Quick stats for your watchlist.</p>
+            </div>
+          </div>
+          <div class="premium-stats" id="premium-stats"></div>
+        </section>
+        <h3>Planning to watch</h3>
+        <div id="watchlist-plan" class="watchlist-row"></div>
+        <h3>Completed</h3>
+        <div id="watchlist-completed" class="watchlist-row"></div>
+        <h3>Dropped</h3>
+        <div id="watchlist-dropped" class="watchlist-row"></div>
+        <h3>Favorite</h3>
+        <div id="watchlist-favorite" class="watchlist-row"></div>
+        <p id="empty-watchlist" class="empty-state">
+        Your watchlist is empty. Add some movies!
+        </p>
+
+    </div>
+
+    </main>
+<div id="movie-details-modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="details-title">Movie Title</h3>
+      <button type="button" id="close-details-modal" class="modal-close">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <img id="details-poster" src="" alt="Poster" style="width:100%; border-radius:8px; margin-bottom:12px;">
+      <div class="details-text">
+        <p id="details-year"></p>
+        <p id="details-genres"></p>
+        <p id="details-cast"></p>
+        <p id="details-director"></p>
+        <p id="details-extract"></p>
+
+        <div id="details-trailer-wrap" style="display:none; margin-top:12px;">
+          <div class="trailer-embed">
+            <iframe id="details-trailer-iframe"
+                    src=""
+                    title="Trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="watchlist-actions">
+    <button id="remove-watchlist-btn" type="button" class="btn btn-danger">
+        Remove from Watchlist
+    </button>
+    </div>
+  </div>
+</div>
+    <div id="toast" class="toast"></div>
+    <script src="../app.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieShelf - Home</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-film"></i>
+                <h1>Movie<span>Shelf</span></h1>
+            </div>
+            <nav class="nav">
+                <a href="home.html" class="nav-link active" data-page="home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="movies.html" class="nav-link" data-page="movies">
+                    <i class="fas fa-video"></i> Movies
+                </a>
+                <a href="watchlist.html" class="nav-link" data-page="watchlist">
+                    <i class="fas fa-bookmark"></i> Watchlist
+                </a>
+                <a href="login.html" class="nav-link" data-page="login">
+                    <i class="fas fa-user"></i> Login
+                </a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" type="button">
+                <i class="fas fa-sun"></i> Theme
+            </button>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content" style="margin-top: 10px;">
+        <div class="container">
+                <div class="hero">
+                    <h2>Welcome to MovieShelf</h2>
+                    <p>Discover, add, and manage your favorite movies <br> Login to start!</p>
+                    <a href="movies.html" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Browse Movies
+                    </a>
+                </div>
+
+                <div class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-plus-circle"></i>
+                        <h3>Add Movies</h3>
+                        <p>Add new movies to your collection!</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-bookmark"></i>
+                        <h3>Watchlist</h3>
+                        <p>Save movies to watch later :)</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-search"></i>
+                        <h3>Search</h3>
+                        <p>Find movies by title or genre!</p>
+                    </div>
+                </div>
+</div>
+    </main>
+    <div id="toast" class="toast"></div>
+    <script src="../app.js"></script>
+</body>
+</html>
