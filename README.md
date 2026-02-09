@@ -1,123 +1,119 @@
-# CineTrack (Movie Tracker)
+**Project overview**
 
-A full-stack movie tracking app where users can browse movies, build a personal watchlist, and leave reviews. The backend is built with Node.js, Express, and MongoDB, following a modular structure (routes, controllers, models, middleware, configuration).
+**Movie Explorer - Movie Info, Ratings, Trailers & Reviews**
 
-## Project Overview
-- **Topic:** Movie tracking app (watchlist + reviews)
-- **Backend:** Node.js + Express + MongoDB
-- **Frontend:** Static HTML/CSS/JS
-- **Collections:** `users`, `movies`, `watchlists`
-- **Authentication:** JWT with role-based access control (RBAC)
-- **Email:** SMTP welcome email on registration (Nodemailer)
+This project is a Movie Website API built using **Node.js, Express, and MongoDB** that allows users to explore movie information, ratings, trailers, and reviews. The system supports user accounts, personalized movie lists (plan to watch, completed, dropped, favorite), and community reviews. Also project has role-based control: users, premium users, admins.
 
-## Setup Instructions
+• **Main features (List of key features of application)**
 
-### 1) Backend
+User:
 
-```bash
-cd /Users/test/Downloads/web2_final\ 2/backend
+\-User registration and logging in, profile management;
+
+\-Movies with searching and filtering: movie details (title, poster, trailer link, description, year, cast, director, average rating, reviews);
+
+\-Searching by title/name/genre;
+
+\-Ability to add movies to personal watchlists, and managing those lists;
+
+Admin:
+
+\-Managing reviews, deleting users reviews if needed;
+
+\-List of all users in website: ability to change their role;
+
+\-Adding new movies;
+
+\-View watchlist stats.
+
+Premium:
+
+\-View watchlist stats.
+
+**Project setup**
+
+Run:
+
+cd .\\backend
+
 npm install
+
+Start server:
+
 npm run dev
-```
 
-Create a `.env` file in `/Users/test/Downloads/web2_final 2/backend`:
+#### API Documentatition
 
-```
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/movies
-JWT_SECRET=replace_with_strong_secret
-JWT_EXPIRES_IN=7d
+#### Authentication
 
-# SMTP (optional)
-SMTP_HOST=smtp.yourprovider.com
-SMTP_PORT=587
-SMTP_USER=your_smtp_user
-SMTP_PASS=your_smtp_password
-SMTP_FROM="CineTrack <no-reply@yourdomain.com>"
-SMTP_SECURE=false
-```
+#### • POST /api/auth/register - register a new user
 
-### 2) Frontend
-Open the HTML pages in `/Users/test/Downloads/web2_final 2/frontend/pages`.
+#### • POST /api/auth/login - user login with JWT authentication
 
-## API Documentation
+#### User
 
-**Base URL:** `http://localhost:5000/api`
+#### • GET /api/users/profile - get user profile
 
-### Authentication (Public)
-- `POST /auth/register`
-  - Body: `username`, `email`, `password`, optional `role` (`user` or `premium`)
-- `POST /auth/login`
-  - Body: `email`, `password`
+#### • PUT /api/users/profile - update user profile
 
-### User Management (Private)
-- `GET /users/profile`
-- `PUT /users/profile`
-  - Body: `username`, `email`
-- `GET /users/all` (Admin only)
-- `PUT /users/:id/role` (Admin only)
-  - Body: `role` (`user`, `premium`, `admin`)
+#### • GET /api/users/all- get all users
 
-### Movies (Resource)
-- `GET /movies`
-- `GET /movies/:id`
-- `POST /movies` (Admin only)
-- `PUT /movies/:id` (Admin only)
-- `DELETE /movies/:id` (Admin only)
+#### • PUT /api/users/:id/role - update user role(admin)
 
-### Reviews (Private)
-- `POST /movies/:id/reviews`
-- `PUT /movies/:id/reviews/:reviewId` (Owner, Admin, or Moderator)
-- `DELETE /movies/:id/reviews/:reviewId` (Owner, Admin, or Moderator)
-- `GET /movies/:id/reviews`
+#### Movies and reviews
 
-### Watchlist (Second Collection)
-- `POST /watchlist`
-- `GET /watchlist`
-- `GET /watchlist/stats` (Premium or Admin)
-- `PUT /watchlist/:id`
-- `DELETE /watchlist/:id`
+#### • GET /api/movies - get all movies (with pagination, filtering, and sorting)
 
-**Auth Header:**
-```
-Authorization: Bearer <token>
-```
+#### • GET /api/movies/:id - get movie details
 
-## RBAC Roles
-- `user`: Default role. Can manage their own watchlist and reviews.
-- `premium`: Same as user + access to `/watchlist/stats`.
-- `admin`: Full access to manage movies and list users.
+#### • GET /api/movies/:id/reviews - get movie reviews
 
-## Validation and Error Handling
-- Input validation via `express-validator`
-- Centralized error handling middleware
-- Proper HTTP status codes: `400`, `401`, `403`, `404`, `500`
+#### • POST /api/movies - add a new movie (admin only)
 
-## Deployment
-Deploy on Render, Railway, or Replit. Set environment variables in the platform dashboard:
-- `MONGODB_URI`
-- `JWT_SECRET`
-- `JWT_EXPIRES_IN`
-- SMTP variables if using email
+#### • PUT /api/movies/:id - update movie information (admin only)
 
-## Screenshots
+#### • DELETE /api/movies/:id - delete a movie (admin only)
 
-**Home:** quick access to trending movies and recommendations.
+#### • POST /api/movies/:id/reviews - add a review for a movie
 
-![Home](docs/screenshots/home.svg)
+#### • GET /api/movies/:id/reviews - get all reviews for a movie
 
-**Movies:** search and browse the movie library.
+#### • PUT /api/movies/:id/reviews/:reviewId - update a review
 
-![Movies](docs/screenshots/movies.svg)
+#### • DELETE /api/movies/:id/reviews/:reviewId - delete a review (user, admin)
 
-**Watchlist:** update status, rating, and favorites.
+#### User Movie Lists
 
-![Watchlist](docs/screenshots/watchlist.svg)
+#### • POST /api/watchlist- add a movie to watchlist
 
-**Login:** secure authentication with JWT.
+#### • GET /api/watchlist - get watchlists
 
-![Login](docs/screenshots/login.svg)
+#### • GET /api/watchlist/stats - get watchlists stats(premium/admin)
 
-**Profile:** update username and email.
+#### • PUT /api/watchlist/:id - update watchlist
 
-![Profile](docs/screenshots/profile.svg)
+#### • DELETE /api/watchlist/:id - delete from watchlist
+
+#### Screenshots
+## Registration Page
+![Registration](./screenshots/register.png)
+## Login Page
+![Login](./screenshots/login.png)
+## Profile Page
+![Profile](./screenshots/profile.png)
+## Admin panel 
+![Admin panel](./screenshots/admin-panel.png)
+## Home Page
+![Home](./screenshots/home.png)
+## Movies Page
+![Movies](./screenshots/movies.png)
+## Add movie modal
+![Add movie](./screenshots/movieadd.png)
+## Reviews
+![Reviews](./screenshots/reviews.png)
+## Add to watchlist
+![Add to watchlist](./screenshots/addwatchlist.png)
+## Watchlist page
+![Watchlist](./screenshots/watchlist.png)
+## Remove from watchlist
+![Remove from watchlist](./screenshots/remove.png)
